@@ -1,0 +1,33 @@
+{% extends "master.html" %}
+
+{% block title %}Ver Números Telefónicos{% endblock %}
+
+{% block content %}
+<h2>Lista de Números Telefónicos</h2>
+<table id="tablaNumeros" class="display">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Número</th>
+            <th>Tipo</th>
+            <th>Propietario</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for numero in numeros %}
+        <tr>
+            <td>{{ numero.id }}</td>
+            <td>{{ numero.telefono }}</td>
+            <td>{{ numero.tipo }}</td>
+            <td>{{ numero.estudiante.nombre }} {{ numero.estudiante.apellido }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script>
+  $(document).ready(function() {
+    $('#tablaNumeros').DataTable();
+  });
+</script>
+{% endblock %}

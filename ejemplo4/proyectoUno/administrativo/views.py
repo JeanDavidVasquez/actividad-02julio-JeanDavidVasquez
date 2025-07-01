@@ -27,6 +27,21 @@ def index(request):
     informacion_template = {'estudiantes': estudiantes, 'numero_estudiantes': len(estudiantes)}
     return render(request, 'index.html', informacion_template)
 
+def ver_numeros_telefonicos(request):
+    """
+        Listar los registros del modelo NumeroTelefonico,
+        obtenidos de la base de datos.
+    """
+    # a través del ORM de django se obtiene
+    # los registros de la entidad; el listado obtenido
+    # se lo almacena en una variable llamada
+    # numeros
+    numeros = NumeroTelefonico.objects.all()
+    # en la variable tipo diccionario llamada informacion_template
+    # se agregará la información que estará disponible
+    # en el template
+    informacion_template = {'numeros': numeros}
+    return render(request, 'verNumerosTelefonicos.html', informacion_template)
 
 def obtener_estudiante(request, id):
     """
