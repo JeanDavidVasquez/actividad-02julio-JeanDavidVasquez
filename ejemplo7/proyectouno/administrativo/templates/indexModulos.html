@@ -1,0 +1,32 @@
+{% extends "master.html" %}
+{% block title %}Listado de Módulos{% endblock %}
+{% block content %}
+<h1>{{ mititulo|default:"Listado de Módulos" }}</h1>
+<hr>
+<h3>Número de Módulos: {{ modulos|length }}</h3>
+<hr>
+[<a href="{% url 'crear_modulo' %}">nuevo</a>]
+<hr>
+<table border="1px">
+  <tr>
+    <th><b>Nombre</b></th>
+    <th><b>Valor Total de Matrículas</b></th>
+  </tr>
+  {% for m in modulos %}
+  <tr>
+    <td>
+      {% if m.nombre == "1" %}Primero
+      {% elif m.nombre == "2" %}Segundo
+      {% elif m.nombre == "3" %}Tercero
+      {% elif m.nombre == "4" %}Cuarto
+      {% elif m.nombre == "5" %}Quinto
+      {% elif m.nombre == "6" %}Sexto
+      {% else %}{{ m.nombre }}
+      {% endif %}
+    </td>
+    <td>{{ m.valor_total }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<hr>
+{% endblock %}

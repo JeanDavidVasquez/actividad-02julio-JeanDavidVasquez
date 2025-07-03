@@ -1,0 +1,33 @@
+{% extends "master.html" %}
+{% block title %}Listado de Estudiantes{% endblock %}
+{% block content %}
+<h1>{{ mititulo }}</h1>
+<hr>
+<h3>Número de Estudiantes {{ numero_estudiantes }}</h3>
+<hr>
+[<a href="{% url 'crear_estudiante' %}">nuevo</a>]
+<hr>
+<table border="1px">
+  <tr>
+    <th><b>Nombre</b></th>
+    <th><b>Apellido</b></th>
+    <th><b>Cédula</b></th>
+    <th><b>Edad</b></th>
+    <th><b>Tipo de Estudiante</b></th>
+    <th><b>Opciones</b></th>
+  </tr>
+  {% for e in estudiantes %}
+  <tr>
+    <td>{{ e.nombre }}</td>
+    <td>{{ e.apellido }}</td>
+    <td>{{ e.cedula }}</td>
+    <td>{{ e.edad }}</td>
+    <td>{{ e.get_tipo_estudiante_display }}</td>
+    <td>
+      [<a href="{% url 'detalle_estudiante' e.id %}">ver</a>]
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+<hr>
+{% endblock %}

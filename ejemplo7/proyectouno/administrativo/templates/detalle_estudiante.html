@@ -1,0 +1,36 @@
+{% extends "master.html" %}
+{% block title %}Detalle Estudiante{% endblock %}
+{% block content %}
+<h2>Detalle estudiante</h2>
+
+<b>Nombre:</b> {{e.nombre}}
+</br>
+<b>Apellido:</b> {{e.apellido}}
+</br>
+<b>Edad:</b> {{e.edad}}
+</br>
+<b>Cédula:</b> {{e.cedula}}
+</br>
+<b>Tipo de Estudiante:</b> {{ tipo_estudiante }}
+</br>
+<b>Costo de Matrículas:</b> ${{ costo_matriculas }}
+</br>
+<hr>
+<table border="1px">
+  <tr>
+    <th><b>Módulo</b></th>
+    <th><b>comentario</b></th>
+  </tr>
+  {% for m in e.obtener_matriculas %}
+  <tr>
+    <td>
+      {{m.modulo.nombre}}
+    </td>
+    <td>
+      {{m.comentario}}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+</br>
+{% endblock %}

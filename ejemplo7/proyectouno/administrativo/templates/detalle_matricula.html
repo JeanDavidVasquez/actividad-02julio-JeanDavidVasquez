@@ -1,0 +1,12 @@
+{% extends "master.html" %}
+{% block title %}Detalle de Matrícula{% endblock %}
+{% block content %}
+<h3>Detalle de Matricula</h3>
+
+<b>Nombre:</b> {{ matricula.estudiante }}
+</br>
+<b>Modulo:</b> {{ matricula.modulo }}
+</br>
+<b>Costo:</b> ${{ matricula.costo }}
+</br>
+{% endblock %}
