@@ -1,13 +1,10 @@
 {% extends "master.html" %}
-{% block title %}Listado de Módulos{% endblock %}
 {% block content %}
-<h1>{{ mititulo|default:"Listado de Módulos" }}</h1>
+<h2>Número de Módulos: {{ modulos|length }}</h2>
 <hr>
-<h3>Número de Módulos: {{ modulos|length }}</h3>
+<a href="{% url 'crear_modulo' %} " class="btn-matricula-azul mt-3">Crear Módulo</a>
 <hr>
-[<a href="{% url 'crear_modulo' %}">nuevo</a>]
-<hr>
-<table border="1px">
+<table border="1px" class="table table-striped table-hover table-bordered table-responsive">
   <tr>
     <th><b>Nombre</b></th>
     <th><b>Valor Total de Matrículas</b></th>

@@ -6,12 +6,28 @@ from .models import Modulo
 
 from administrativo.models import Matricula, Modulo, Estudiante
 
-class MatriculaForm(ModelForm):
+class MatriculaForm(forms.ModelForm):
     class Meta:
         model = Matricula
-        fields = ['estudiante', 'modulo', 'comentario', 'costo']  
+        fields = ['estudiante', 'modulo', 'comentario', 'costo']
+        widgets = {
+            'estudiante': forms.Select(attrs={
+                'class': 'form-control'
+            }),
+            'modulo': forms.Select(attrs={
+                'class': 'form-control'
+            }),
+            'comentario': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Comentario'
+            }),
+            'costo': forms.NumberInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Costo'
+            }),
+        }
 
-class MatriculaEditForm(ModelForm):
+class MatriculaEditForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(MatriculaEditForm, self).__init__(*args, **kwargs)
@@ -19,6 +35,14 @@ class MatriculaEditForm(ModelForm):
         self.fields["estudiante"].widget = forms.widgets.HiddenInput()
         self.initial['modulo'] = self.instance.modulo
         self.fields["modulo"].widget = forms.widgets.HiddenInput()
+
+        # Solo agregar clases aquí sin modificar la estructura
+        self.fields['comentario'].widget.attrs.update({
+            'class': 'form-control',
+        })
+        self.fields['costo'].widget.attrs.update({
+            'class': 'form-control',
+        })
 
     class Meta:
         model = Matricula
@@ -31,23 +55,27 @@ class MatriculaEditForm(ModelForm):
             }),
         }
 
-class ModuloForm(ModelForm):
+class ModuloForm(forms.ModelForm):
     class Meta:
         model = Modulo
         fields = ['nombre']
-
-class EstudianteForm(ModelForm):
-    class Meta:
-        model = Estudiante
-        fields = ['nombre', 'apellido', 'cedula', 'edad', 'tipo_estudiante']
-
+        widgets = {
+            'nombre': forms.Select(attrs={
+                'class': 'form-control'
+            }),
+        }
+        
 
 class EstudianteForm(forms.ModelForm):
     class Meta:
         model = Estudiante
         fields = ['nombre', 'apellido', 'cedula', 'edad', 'tipo_estudiante']
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre'}),
+            'apellido': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Apellido'}),
+            'cedula': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Cédula'}),
+            'edad': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Edad'}),
+            'tipo_estudiante': forms.Select(attrs={'class': 'form-control'}),
+        }
 
-class ModuloForm(forms.ModelForm):
-    class Meta:
-        model = Modulo
-        fields = ['nombre']
+

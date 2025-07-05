@@ -66,7 +66,7 @@ def editar_matricula(request, id):
         formulario = MatriculaEditForm(instance=matricula)
     diccionario = {'formulario': formulario}
 
-    return render(request, 'crear_matricula.html', diccionario)
+    return render(request, 'editar_matricula.html', diccionario)
 
 def detalle_estudiante(request, id):
     """

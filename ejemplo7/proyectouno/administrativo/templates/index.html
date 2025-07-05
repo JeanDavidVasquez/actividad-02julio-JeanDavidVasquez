@@ -1,15 +1,11 @@
 {% extends "master.html" %}
-{% block title %}
-Matriculas
-{% endblock %}
 {% block content %}
-<h1>{{ mititulo }}</h1>
 <hr>
 <h3>Número de Matriculas {{ numero_matriculas }}</h3>
 <hr>
-[<a href="{% url 'crear_matricula' %}">nuevo</a>]
+<a href="{% url 'crear_matricula' %}" class="btn-matricula-azul mt-3">Crear Matricula</a>
 <hr>
-<table border="1px">
+<table border="1px" class="table table-striped table-hover table-bordered table-responsive">
   <tr>
     <th><b>Estudiante</b></th>
     <th><b>Tipo de Estudiante</b></th>
@@ -24,8 +20,7 @@ Matriculas
     </td>
     <td>
       {{ e.estudiante.get_tipo_estudiante_display }}
-      [<a href="{% url 'detalle_estudiante' e.estudiante.id %}">+</a>]
-    </td>
+      <a href="{% url 'detalle_estudiante' e.estudiante.id %}"><i class="bi bi-eye"></i></a></td>
     <td>
       {{ e.modulo.nombre }}
     </td>
@@ -33,11 +28,14 @@ Matriculas
       {{ e.comentario }}
     </td>
     <td>
-      [<a href="{% url 'detalle_matricula' e.id %}">ver</a>]
-      [<a href="{% url 'editar_matricula' e.id %}">editar</a>]
+      <a href="{% url 'detalle_matricula' e.id %}" class="btn-matricula-azul">ver</a>
+      <a href="{% url 'editar_matricula' e.id %}" class="btn-matricula-azul">editar</a>
     </td>
   </tr>
   {% endfor %}
 </table>
-<hr>
 {% endblock %}
+
+
+
+

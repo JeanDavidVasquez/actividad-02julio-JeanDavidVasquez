@@ -2,21 +2,33 @@
 {% block title %}Detalle Estudiante{% endblock %}
 {% block content %}
 <h2>Detalle estudiante</h2>
-
-<b>Nombre:</b> {{e.nombre}}
-</br>
-<b>Apellido:</b> {{e.apellido}}
-</br>
-<b>Edad:</b> {{e.edad}}
-</br>
-<b>Cédula:</b> {{e.cedula}}
-</br>
-<b>Tipo de Estudiante:</b> {{ tipo_estudiante }}
-</br>
-<b>Costo de Matrículas:</b> ${{ costo_matriculas }}
-</br>
-<hr>
-<table border="1px">
+<table border="1px" class="table table-striped table-hover table-bordered table-responsive">
+  <tr>
+    <th><b>Nombre</b></th>
+    <td>{{ e.nombre }}</td>
+  </tr>
+  <tr>
+    <th><b>Apellido</b></th>
+    <td>{{ e.apellido }}</td>
+  </tr>
+  <tr>
+    <th><b>Edad</b></th>
+    <td>{{ e.edad }}</td>
+  </tr>
+  <tr>
+    <th><b>Cédula</b></th>
+    <td>{{ e.cedula }}</td>
+  </tr>
+  <tr>
+    <th><b>Tipo de Estudiante</b></th>
+    <td>{{ tipo_estudiante }}</td>
+  </tr>
+  <tr>
+    <th><b>Costo de Matrículas</b></th>
+    <td>${{costo_matriculas }}</td>
+  </tr>
+</table>
+<table border="1px" class="table table-striped table-hover table-bordered table-responsive">
   <tr>
     <th><b>Módulo</b></th>
     <th><b>comentario</b></th>

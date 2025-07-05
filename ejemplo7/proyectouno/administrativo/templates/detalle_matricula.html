@@ -3,10 +3,23 @@
 {% block content %}
 <h3>Detalle de Matricula</h3>
 
-<b>Nombre:</b> {{ matricula.estudiante }}
-</br>
-<b>Modulo:</b> {{ matricula.modulo }}
-</br>
-<b>Costo:</b> ${{ matricula.costo }}
-</br>
+<table border="1px" class="table table-striped table-hover table-bordered table-responsive">
+  <tr>
+    <th><b>Nombre</b></th>
+    <th><b>Modulo</b></th>
+    <th><b>Costo</b></th>
+  </tr>
+  <tr>
+    <td>
+      {{ matricula.estudiante.nombre }}
+    </td>
+    <td>
+      {{ matricula.modulo.nombre }}
+    </td>
+    <td>
+      {{ matricula.costo }}
+    </td>
+  </tr>
+</table>
+
 {% endblock %}

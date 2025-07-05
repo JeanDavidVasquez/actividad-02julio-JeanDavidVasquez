@@ -1,0 +1,34 @@
+{% extends "master.html" %}
+{% block content %}
+
+<section class="section-padding section-bg">
+  <div class="container">
+      <div class="row">
+
+          <div class="col-lg-12 col-12">
+              <h3 class="mb-4 pb-2">Edita Matricula</h3>
+          </div>
+
+          <div class="col-lg-6 col-12">
+            <form method="post" class="custom-form contact-form">
+                {% csrf_token %}
+                {{ formulario.estudiante }}
+                {{ formulario.modulo }}
+                
+                <div class="form-floating mb-3">
+                  {{ formulario.comentario }}
+                  <label for="{{ formulario.comentario.id_for_label }}">Comentario</label>
+                </div>
+              
+                <div class="form-floating mb-3">
+                  {{ formulario.costo }}
+                  <label for="{{ formulario.costo.id_for_label }}">Costo</label>
+                </div>
+              
+                <button type="submit" class="form-control">Guardar Cambios</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</section>
+{% endblock %}
